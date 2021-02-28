@@ -14,7 +14,14 @@ class ClubesController extends Controller{
     public function createClube(Request $request) {
         $clube = $request->input('nome_clube'); 
         // echo $clube;
-
+        $ifexists = Clube::where('nome_do_clube', '=', $clube)->first();
+        if($ifexists) {
+            $data=[
+                'status'=>'0',
+                'msg'=>'clube já cadastrado'
+            ];
+            return response()->json($data);
+        }
         $res = Clube::create([
             'nome_do_clube' => $clube
         ]);

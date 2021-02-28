@@ -11,7 +11,17 @@ use App\Models\Socio;
 
 class SociosClubesController extends Controller {
     public function listUsuariosClubes() {
-        return SocioClube::all();
+        $data = [];
+        foreach(SocioClube::all() as $associado) {
+            array_push($data,  [
+                'id_socio' => $associado['id_socio'],
+                'id_clube' => $associado['id_clube'],
+                'nome_completo' => Socio::where('id', '=', $associado['id_socio'])->first()['nome_completo'],
+                'nome_do_clube' => Clube::where('id', '=', $associado['id_clube'])->first()['nome_do_clube'],
+            ]);
+        }
+        return response()->json($data);
+
     }
 
     public function createUsuarioClube(Request $request) {
@@ -41,14 +51,14 @@ class SociosClubesController extends Controller {
 
         if( !isset($clubes) ) {
             $data=[
-                'status'=>'1',
+                'status'=>'0',
                 'msg'=>'clube não existe'
             ];
             return response()->json($data);
         }
         if(!isset($socio)){
             $data=[
-                'status'=>'0',
+                'status'=>'1',
                 'msg'=>'usuario cadastrado'
             ];
 
@@ -77,7 +87,7 @@ class SociosClubesController extends Controller {
             'id_clube' => $clubes['id']
         ]);
         $data=[
-            'status'=>'0',
+            'status'=>'1',
             'msg'=>'usuario e clube associados'
         ];
 
@@ -94,7 +104,7 @@ class SociosClubesController extends Controller {
         if($ifexists) {
             
             $data=[
-                'status'=>'0',
+                'status'=>'1',
                 'msg' => 'item deletado'
             ];
             return response()->json($data);

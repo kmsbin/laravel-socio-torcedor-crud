@@ -27,7 +27,7 @@ Route::post('/create-clube', "App\Http\Controllers\ClubesController@createClube"
 Route::post('/delete-clube', "App\Http\Controllers\ClubesController@deleteClube");
 
 Route::get('/list-usuarios-clubes', "App\Http\Controllers\SociosClubesController@listUsuariosClubes");
-Route::post('create-usuario-clube', "App\Http\Controllers\SociosClubesController@createUsuarioClube");
-Route::post('create-usuario-clube', "App\Http\Controllers\SociosClubesController@createUsuarioNome");
-Route::post('delete-usuario-clube', "App\Http\Controllers\SociosClubesController@deleteUsuario");
+// Route::post('create-usuario-clube', "App\Http\Controllers\SociosClubesController@createUsuarioClube");
+Route::post('/create-usuario-clube', "App\Http\Controllers\SociosClubesController@createUsuarioNome");
+Route::post('/delete-usuario-clube', "App\Http\Controllers\SociosClubesController@deleteUsuario");
 
