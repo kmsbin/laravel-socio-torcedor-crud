@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ClubesController extends Controller{
     public function listClubes() {
-        return response()->json([Clube::all()]);
+        return Clube::all();
     }
     public function createClube(Request $request) {
         $clube = $request->input('nome_clube'); 
