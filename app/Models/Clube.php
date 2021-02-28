@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clube extends Model{
     use HasFactory;
+    public $incrementing = true;
 
     protected $fillable = ['nome_do_clube', 'id'];
     protected $dates = ['deleted_at'];
