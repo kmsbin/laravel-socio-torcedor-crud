@@ -7,7 +7,8 @@ use App\Models\Clube;
 
 use Illuminate\Http\Request;
 
-class ClubesController extends Controller{
+
+class ClubesController extends Controller {
     public function listClubes() {
         echo Clube::all();
         return Clube::all();
